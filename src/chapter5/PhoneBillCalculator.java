@@ -9,8 +9,8 @@ public class PhoneBillCalculator {
     public static void main (String args[]){
          double plan = getPlan();
          double minutes = getMinutes();
-         double tax = calculateTax(plan);
          double overage = calculateOverageFees(minutes);
+        double tax = calculateTax(plan , overage);
          calculateTotal(plan , tax , overage);
     }
 
@@ -30,9 +30,9 @@ public class PhoneBillCalculator {
         return minutes;
     }
 
-    static public double calculateTax(double plan){
+    static public double calculateTax(double plan , double overage){
         // tax = plan * 15%
-        double tax = plan * 0.15;
+        double tax = (plan + overage) * 0.15;
         return tax;
     }
 
